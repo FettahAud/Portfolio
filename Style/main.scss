@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Meow+Script:regular);
+$colors: (
+	bg__main: #000,
+	font__main: #64bebf,
+	font__main-transparent: rgba(#daf6ff, 0.4),
+	font__main-light: #daf6ff,
+	font__secondary: #fe9941,
+);
+@mixin flex($direction, $justify, $align) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Poppins, sans-serif;
+}
+li {
+	list-style: none;
+}
+body {
+	min-height: 100vh;
+	background: map-get($colors, bg__main);
+	color: map-get($colors, font__main);
+	// margin: 0 clamp(1.75rem, calc(-2.4615rem + 18.7179vw), 5rem);
+	margin: 0 2rem;
+}
+section {
+	height: 100vh;
+	width: 100%;
+	@include flex(column, flex-start, center);
+	gap: 20vh;
+	header {
+		width: 100%;
+		padding: 2rem 0;
+		@include flex(row, space-between, center);
+		.logo {
+			font-family: Meow Script, sans-serif;
+			font-size: 2.2rem;
+			cursor: default;
+			user-select: none;
+		}
+		ul {
+			@include flex(row, space-between, center);
+			width: clamp(20rem, calc(15.9836rem + 9.1803vw), 27rem);
+			font-size: clamp(1rem, calc(0.7705rem + 0.5246vw), 1.4rem);
+			li {
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+				&::before {
+					content: "";
+					width: 100%;
+					height: 2px;
+					background-color: map-get(
+						$colors,
+						font__main-light
+					);
+					position: absolute;
+					bottom: -2px;
+					margin-bottom: 2px;
+					transform: translateX(-101%);
+					transition: 0.1s ease-out all;
+				}
+				&:hover {
+					&::before {
+						transform: translateX(0%);
+					}
+				}
+			}
+		}
+	}
+	.title {
+		&__el__div {
+			font-size: clamp(1.75rem, calc(1rem + 2vw), 5rem);
+			line-height: 1;
+			&--transparent {
+				color: map-get($colors, font__main-transparent);
+			}
+		}
+		&__el__span {
+			font-size: clamp(0.25rem, calc(0.4615rem + 1.2821vw), 1rem);
+			&:first-of-type {
+				margin-left: 0.3rem;
+			}
+		}
+		&__el--right {
+			text-align: end;
+			display: block;
+		}
+	}
+}
