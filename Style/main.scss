@@ -13,6 +13,13 @@ $colors: (
 	justify-content: $justify;
 	align-items: $align;
 }
+:root {
+	--clip: circle(70% at 50% 20%);
+	--top: -100vh;
+	--lineWidth: 1.7rem;
+	--rotateTop: rotate(0deg);
+	--rotateBottom: rotate(0deg);
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -26,25 +33,31 @@ body {
 	min-height: 100vh;
 	background: map-get($colors, bg__main);
 	color: map-get($colors, font__main);
-	// margin: 0 clamp(1.75rem, calc(-2.4615rem + 18.7179vw), 5rem);
-	margin: 0 2rem;
 }
 section {
 	height: 100vh;
 	width: 100%;
-	@include flex(column, flex-start, center);
-	gap: 20vh;
+	position: relative;
 	header {
 		width: 100%;
 		padding: 2rem 0;
 		@include flex(row, space-between, center);
+		height: 5rem;
+		// background-color: red;
+		padding: 0 2rem;
 		.logo {
 			font-family: Meow Script, sans-serif;
-			font-size: 2.2rem;
+			font-size: clamp(1.6rem, calc(1.7077rem + 0.4103vw), 2.2rem);
 			cursor: default;
 			user-select: none;
 		}
-		ul {
+		.menu {
+			display: none;
+			&::before {
+				content: "";
+			}
+		}
+		.nav {
 			@include flex(row, space-between, center);
 			width: clamp(20rem, calc(15.9836rem + 9.1803vw), 27rem);
 			font-size: clamp(1rem, calc(0.7705rem + 0.5246vw), 1.4rem);
@@ -75,8 +88,12 @@ section {
 		}
 	}
 	.title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		&__el__div {
-			font-size: clamp(1.75rem, calc(1rem + 2vw), 5rem);
+			font-size: clamp(1.5rem, calc(1rem + 2vw), 5rem);
 			line-height: 1;
 			&--transparent {
 				color: map-get($colors, font__main-transparent);
@@ -91,6 +108,80 @@ section {
 		&__el--right {
 			text-align: end;
 			display: block;
+		}
+	}
+}
+@media screen and (max-width: 700px) {
+	body {
+		margin: 0;
+	}
+	section {
+		position: relative;
+		header {
+			padding: 2rem 1.5rem;
+			.menu {
+				display: block;
+				cursor: pointer;
+				height: 1.4rem;
+				width: 1.7rem;
+				display: flex;
+				align-items: center;
+				.lines {
+					height: 2px;
+					width: var(--lineWidth);
+					position: relative;
+					background-color: map-get(
+						$map: $colors,
+						$key: font__main-light
+					);
+					&::before,
+					&::after {
+						content: "";
+						width: var(--lineWidth);
+						height: 2px;
+						position: absolute;
+						left: 0;
+						background-color: map-get(
+							$map: $colors,
+							$key:
+								font__main-light
+						);
+					}
+					&::before {
+						top: -0.5rem;
+						transform: var(--rotateTop);
+						transform-origin: left;
+					}
+					&::after {
+						bottom: -0.5rem;
+						transform: var(
+							--rotateBottom
+						);
+						transform-origin: left;
+					}
+				}
+				&::before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: var(--top);
+					background-color: red;
+					left: 0;
+					clip-path: var(--clip);
+					pointer-events: none;
+				}
+			}
+			.nav {
+				display: none;
+				// li {
+				// }
+			}
+		}
+		main {
+			pointer-events: none;
+			user-select: none;
+			z-index: -2;
 		}
 	}
 }

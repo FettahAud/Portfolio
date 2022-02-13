@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Meow+Script:regular);
+:root {
+  --clip: circle(70% at 50% 20%);
+  --top: -100vh;
+  --lineWidth: 1.7rem;
+  --rotateTop: rotate(0deg);
+  --rotateBottom: rotate(0deg);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,17 +23,12 @@ body {
   min-height: 100vh;
   background: #000;
   color: #64bebf;
-  margin: 0 2rem;
 }
 
 section {
   height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20vh;
+  position: relative;
 }
 
 section header {
@@ -35,16 +38,26 @@ section header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 5rem;
+  padding: 0 2rem;
 }
 
 section header .logo {
   font-family: Meow Script, sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, calc(1.7077rem + 0.4103vw), 2.2rem);
   cursor: default;
   user-select: none;
 }
 
-section header ul {
+section header .menu {
+  display: none;
+}
+
+section header .menu::before {
+  content: "";
+}
+
+section header .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -53,13 +66,13 @@ section header ul {
   font-size: clamp(1rem, calc(0.7705rem + 0.5246vw), 1.4rem);
 }
 
-section header ul li {
+section header .nav li {
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-section header ul li::before {
+section header .nav li::before {
   content: "";
   width: 100%;
   height: 2px;
@@ -71,12 +84,19 @@ section header ul li::before {
   transition: 0.1s ease-out all;
 }
 
-section header ul li:hover::before {
+section header .nav li:hover::before {
   transform: translateX(0%);
 }
 
+section .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 section .title__el__div {
-  font-size: clamp(1.75rem, calc(1rem + 2vw), 5rem);
+  font-size: clamp(1.5rem, calc(1rem + 2vw), 5rem);
   line-height: 1;
 }
 
@@ -95,5 +115,68 @@ section .title__el__span:first-of-type {
 section .title__el--right {
   text-align: end;
   display: block;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    margin: 0;
+  }
+  section {
+    position: relative;
+  }
+  section header {
+    padding: 2rem 1.5rem;
+  }
+  section header .menu {
+    display: block;
+    cursor: pointer;
+    height: 1.4rem;
+    width: 1.7rem;
+    display: flex;
+    align-items: center;
+  }
+  section header .menu .lines {
+    height: 2px;
+    width: var(--lineWidth);
+    position: relative;
+    background-color: #daf6ff;
+  }
+  section header .menu .lines::before, section header .menu .lines::after {
+    content: "";
+    width: var(--lineWidth);
+    height: 2px;
+    position: absolute;
+    left: 0;
+    background-color: #daf6ff;
+  }
+  section header .menu .lines::before {
+    top: -0.5rem;
+    transform: var(--rotateTop);
+    transform-origin: left;
+  }
+  section header .menu .lines::after {
+    bottom: -0.5rem;
+    transform: var(--rotateBottom);
+    transform-origin: left;
+  }
+  section header .menu::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: var(--top);
+    background-color: red;
+    left: 0;
+    clip-path: var(--clip);
+    pointer-events: none;
+  }
+  section header .nav {
+    display: none;
+  }
+  section main {
+    pointer-events: none;
+    user-select: none;
+    z-index: -2;
+  }
 }
 /*# sourceMappingURL=main.css.map */
