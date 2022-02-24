@@ -77,7 +77,7 @@ section {
 					bottom: -2px;
 					margin-bottom: 2px;
 					transform: translateX(-101%);
-					transition: 0.1s ease-out all;
+					transition: 0.3s ease-out all;
 				}
 				&:hover {
 					&::before {
@@ -92,6 +92,7 @@ section {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		width: max-content;
 		&__el__div {
 			font-size: clamp(1.5rem, calc(1rem + 2vw), 5rem);
 			line-height: 1;

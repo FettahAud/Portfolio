@@ -1,8 +1,6 @@
+// Mobile navigation
 const menu = document.querySelector('.menu');
-
 let toggle = false
-// CustomEase.create("custom", "M0,0 C0,0 0.052,0.862 0.476,0.934 0.563,0.948 1,1 1,1 ");
-// CustomEase.create("test", "M0,0 C0,0 0.021,0.609 0.328,0.732 0.404,0.762 0.536,0.299 0.56,0.464 0.585,0.641 0.805,0.868 0.864,0.878 0.951,0.892 1,1 1,1 ");
 const tl = gsap.timeline({ duration: 0.5, ease: Expo.inOut });
 menu.addEventListener('click', () => {
    if (tl.isActive()) return;
