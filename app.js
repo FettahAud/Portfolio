@@ -22,9 +22,13 @@ menu.addEventListener('click', () => {
          .to('html', {
             "--clip": "circle(110% at 50% 20%)",
          }, '-=0.2')
-         .to('html', {
+         .to('html[lang="en"]', {
             "--rotateTop": "rotate(40deg)",
             "--rotateBottom": "rotate(-40deg)",
+         }, '-=0.4')
+         .to('html[lang="ar"]', {
+            "--rotateTop": "rotate(-215deg)",
+            "--rotateBottom": "rotate(215deg)",
          }, '-=0.4')
          .to('.lines', {
             width: 0

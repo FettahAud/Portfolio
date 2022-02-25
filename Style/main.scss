@@ -101,7 +101,7 @@ section {
 			}
 		}
 		&__el__span {
-			font-size: clamp(0.25rem, calc(0.4615rem + 1.2821vw), 1rem);
+			font-size: clamp(0.8rem, calc(0.4615rem + 1.2821vw), 1.2rem);
 			&:first-of-type {
 				margin-left: 0.3rem;
 			}
@@ -147,18 +147,17 @@ section {
 							$key:
 								font__main-light
 						);
+						transform-origin: left;
 					}
 					&::before {
 						top: -0.5rem;
 						transform: var(--rotateTop);
-						transform-origin: left;
 					}
 					&::after {
 						bottom: -0.5rem;
 						transform: var(
 							--rotateBottom
 						);
-						transform-origin: left;
 					}
 				}
 				&::before {
