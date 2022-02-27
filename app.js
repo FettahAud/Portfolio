@@ -23,8 +23,8 @@ menu.addEventListener('click', () => {
             "--clip": "circle(110% at 50% 20%)",
          }, '-=0.2')
          .to('html[lang="en"]', {
-            "--rotateTop": "rotate(40deg)",
-            "--rotateBottom": "rotate(-40deg)",
+            "--rotateTop": "rotate(38deg)",
+            "--rotateBottom": "rotate(-38deg)",
          }, '-=0.4')
          .to('html[lang="ar"]', {
             "--rotateTop": "rotate(-215deg)",

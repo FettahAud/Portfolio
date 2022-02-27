@@ -69,23 +69,36 @@ section header .nav {
 section header .nav li {
   cursor: pointer;
   position: relative;
+  color: #0000;
   overflow: hidden;
+  z-index: 10;
 }
 
-section header .nav li::before {
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: #daf6ff;
+section header .nav li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section header .nav li::before, section header .nav li::after {
+  content: attr(content);
   position: absolute;
-  bottom: -2px;
-  margin-bottom: 2px;
-  transform: translateX(-101%);
-  transition: 0.3s ease-out all;
+  top: 0rem;
+  left: 0;
+  transition: 0.3s;
+  color: #daf6ff;
+  pointer-events: none;
+}
+
+section header .nav li::after {
+  top: 1.5rem;
 }
 
 section header .nav li:hover::before {
-  transform: translateX(0%);
+  top: -1.5rem;
+}
+
+section header .nav li:hover::after {
+  top: 0;
 }
 
 section .title {
@@ -106,6 +119,7 @@ section .title__el__div--transparent {
 }
 
 section .title__el__span {
+  color: #daf6ff;
   font-size: clamp(0.8rem, calc(0.4615rem + 1.2821vw), 1.2rem);
 }
 

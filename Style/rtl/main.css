@@ -17,10 +17,4 @@
 #ar .title__el__div {
   line-height: clamp(2rem, calc(1.6444rem + 1.7802vw), 4.8rem);
 }
-
-@media screen and (max-width: 700px) {
-  .lines::before, .lines::after {
-    transform-origin: right;
-  }
-}
 /*# sourceMappingURL=main.css.map */
