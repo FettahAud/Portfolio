@@ -6,14 +6,6 @@
   direction: rtl;
 }
 
-#ar header .nav li::before {
-  transform: translateX(101%);
-}
-
-#ar header .nav li:hover::before {
-  transform: translateX(0%);
-}
-
 #ar .title__el__div {
   line-height: clamp(2rem, calc(1.6444rem + 1.7802vw), 4.8rem);
 }

@@ -3,20 +3,6 @@
 }
 #ar {
 	direction: rtl;
-	header {
-		.nav {
-			li {
-				&::before {
-					transform: translateX(101%);
-				}
-				&:hover {
-					&::before {
-						transform: translateX(0%);
-					}
-				}
-			}
-		}
-	}
 	.title {
 		&__el__div {
 			line-height: clamp(2rem, calc(1.6444rem + 1.7802vw), 4.8rem);
