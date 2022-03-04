@@ -176,11 +176,6 @@ section {
 				height: 100%;
 				position: absolute;
 				top: var(--top);
-				// background: linear-gradient(
-				// 	45deg,
-				// 	map-get($colors, color__main-light),
-				// 	map-get($colors, color__main)
-				// );
 				background: linear-gradient(
 					230deg,
 					map-get($colors, color__main-dark) 0%,
@@ -189,16 +184,18 @@ section {
 				);
 				left: 0;
 				clip-path: var(--clip);
-				pointer-events: none;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-evenly;
 				align-items: center;
 				padding: 6rem 0;
 				li {
-					// opacity: 0;
 					font-size: 3rem;
 					color: map-get($colors, color__main-light);
+					a {
+						position: relative;
+						top: -4rem;
+					}
 					&::before,
 					&::after {
 						content: none;
@@ -213,4 +210,3 @@ section {
 		}
 	}
 }
-// linear-gradient();

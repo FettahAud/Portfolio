@@ -182,7 +182,6 @@ section .title__el--right {
     background: linear-gradient(230deg, #04494f 0%, #daf6ff 280%, #daf6ff 280%);
     left: 0;
     clip-path: var(--clip);
-    pointer-events: none;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -192,6 +191,10 @@ section .title__el--right {
   section header .nav li {
     font-size: 3rem;
     color: #daf6ff;
+  }
+  section header .nav li a {
+    position: relative;
+    top: -4rem;
   }
   section header .nav li::before, section header .nav li::after {
     content: none;

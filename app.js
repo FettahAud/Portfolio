@@ -33,9 +33,12 @@ menu.addEventListener('click', () => {
          .to('.lines', {
             width: 0
          })
+         .to('li a', {
+            top: 0
+         }, '-=0.65')
          .to('html', {
             "--lineWidth": '1.7rem'
-         })
+         }, '-=0.25')
    } else {
       tl
          .to('html', {
