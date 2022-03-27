@@ -62,3 +62,29 @@ menu.addEventListener('click', () => {
          }, '-=0.5')
    }
 });
+// Set Iframe Width
+const slider = document.querySelectorAll('.slide');
+const iframe = document.querySelectorAll('.slide iframe');
+function setIframeWidth() {
+   slider.forEach(slide => {
+      slide.style.width = window.innerWidth / 2 + 200 + 'px';
+      slide.style.height = window.innerHeight / 2 + 200 + 'px';
+   })
+   iframe.forEach(frame => {
+      frame.style.width = window.innerWidth + 400 + 'px';
+      frame.style.height = window.innerHeight + 400 + 'px';
+   })
+}
+window.addEventListener('load', () => setIframeWidth());
+window.addEventListener('resize', () => setIframeWidth());
+
+
+/**
+ * https://alvarotrigo.com/blog/scroll-horizontally-with-mouse-wheel-vanilla-java/
+ * const scrollContainer = document.querySelector("main");
+
+scrollContainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+});
+ */
